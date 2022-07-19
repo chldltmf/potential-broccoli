@@ -1,0 +1,40 @@
+1.key랑 uri세팅
+ -ec2-user@ip :ec2-user로 시작가능
+2.sudo yum update
+ -처음에 update먼저
+3.sudo yum -y upgrade
+
+4.자바 설치
+ -sudo yum list  *jdk-devel :java devel version 목록 검색
+ -sudo yum install -y java-11-openjdk-devel.x86_64 :java 11버전 설치
+ -javac -version  :자바 컴파일 명령어(java:자바실행 명령어)
+ -which java :자바 위치 확인
+ -sudo yum remove java-1.8.0 :자바 설치 삭제
+ 
+5.tomcat 설치
+ -sudo yum install -y wget :wget 설치후 사용가능
+ -wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.63/bin/apache-tomcat-9.0.63.tar.gz :apache.tar로 설치
+ -gunzip apache-tomcat-9.0.63.tar.gz :gz풀기
+ -tar -xf apache-tomcat-9.0.63.tar :tar풀기,옵션(-x : 압축 파일 풀기,-f : 파일 이름을 지정,-v : 묶음/해제 과정을 화면에 표시)
+ -sudo mv apache-tomcat-9.0.63 /usr/local/ :apache디렉토리 변경(이동)
+ -/usr/local/apache-tomcat-9.0.63/bin/startup.sh :tomcat실행
+ -/usr/local/apache-tomcat-9.0.63/bin/shutdown.sh :tomcat 닫음
+ -tail -f /usr/local/apache-tomcat-9.0.63/logs/catalina.out :console같은거 확인-> 정상인지
+ -sudo rm -r apache-tomcat-9.0.63 :apache삭제
+
+6.server.xml
+ -/usr/local/apache-tomcat-9.0.63/conf/ :옆의 url아래에 server.xml파일존재
+ -sudo yum install -y vim :vim 설치후 사용가능
+ -vim server.xml :conf/디렉토리아래에서 바로 실행함
+ -i :insert 가능
+ -<Context docBase="/home/ec2-user/src/" path="" reloadable="false" /> :docBase=""->경로지정
+ -esc:insert 빠져나오기
+ -: ->입력 후 wq입력
+ -wq :w:저장 q:빠져나옴
+
+7.jar파일
+ -jar -xf 파일명 :jar풀기
+ 
+#-pwd :현재경로
+#-ll :list(목록)
+#-mkdir :디렉토리 생성
